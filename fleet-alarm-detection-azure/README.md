@@ -10,7 +10,7 @@ Based on the processed telemetry the nuclio function creates real-time alerts if
 
 * [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/)
 * [Azure Event Hub](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-create)
-* [Nuclio on AKS]()
+* [Nuclio on AKS](https://github.com/nuclio/nuclio/blob/development/docs/setup/aks/getting-started-aks.md)
 * [Spark on Azure](https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-jupyter-spark-sql)
 or 
 [Spark on Kubernetes](https://hub.kubeapps.com/charts/stable/spark)
