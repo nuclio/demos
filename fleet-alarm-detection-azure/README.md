@@ -1,8 +1,8 @@
 # Real-time alarm conditions based on telemetry from a fleet of cars
 
-This demo scenario describes a fleet of cars sending telemetry data to nuclio via Azure Event Hub. The telemetry data is processed and correlated with the weather conditions in the car's location.
+This demo scenario describes a fleet of cars sending telemetry data to nuclio via Azure Event Hub. The telemetry data is processed and correlated with the weather conditions at the car's location.
 
-Based on the processed telemetry the nuclio function creates real-time alerts if necessary and also sends the enriched data to Spark for further calculations and alerts.
+Based on the processed telemetry, the nuclio function creates real-time alerts and also sends the enriched data to Spark for further calculations and alerts.
 
 ![image](https://user-images.githubusercontent.com/17064840/35099715-b7306804-fc61-11e7-8629-3874745393f9.png)
 
@@ -25,7 +25,7 @@ Generate simulated datapoints periodically and post them, via AMQP (EH Data bind
 3. Tire pressure (float)
 4. Fuel efficiency percentage (float)
 
-### Sensor handler - [sensor-handler.go](nuclio-functions/(sensor-handler.go)
+### Sensor handler - [sensor-handler.go](nuclio-functions/sensor-handler.go)
 
 A car sensor handler nuclio function triggered (2) on each datapoint posted to the car sensor event hub. It will then:
 1. Invoke the weather station nuclio function (3), sending the position as an argument and receiving the weather at that location (can just return weighted random - weather.go)
