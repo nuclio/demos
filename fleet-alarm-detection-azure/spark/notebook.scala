@@ -9,10 +9,10 @@ val eventhubParameters = Map[String, String](
   "eventhubs.name" -> "enrichedfleet",  
   "eventhubs.consumergroup" -> "$Default",
   "eventhubs.progressTrackingDir" -> s"$dirPrefix/progress",
-  "eventhubs.policyname" -> "all",
+  "eventhubs.policyname" -> "",
   
-  "eventhubs.policykey" -> "nV0AN8ZlZPfA71jz1chUvt/bO3Gmd4YZL5E1DzzPDuw=",
-  "eventhubs.namespace" -> "iguaziohackfest",
+  "eventhubs.policykey" -> "",
+  "eventhubs.namespace" -> "",
   "eventhubs.partition.count" -> "2",
   "eventhubs.maxRate" -> s"400" 
 )
@@ -30,8 +30,8 @@ val inputStream = spark.readStream
 
 // COMMAND ----------
 
-val storageAccountName = "tk8abtblobs"
-val storageAccountKey = "8essxN36VO+4zIYQEtDJ0+gd6KoHdG9mIvrAcKiKAALAIx2a3u6oqTO8ba8alwboSMnFEOh5wlkxKc8y12pQqQ=="
+val storageAccountName = ""
+val storageAccountKey = ""
 val containerName = "out5"
 
 val timestamp: Long = System.currentTimeMillis / 1000
