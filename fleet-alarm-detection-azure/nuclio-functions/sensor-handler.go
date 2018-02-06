@@ -182,9 +182,11 @@ func callFunction(context *nuclio.Context, name string, body interface{}) ([]byt
         return nil, err
     }
     
-    // convert function name to URL
-    // url := fmt.Sprintf("http://%s.default.svc.cluster.local", name)
+    // convert function name to URL (hardcoded nuclio namespace)
+    // for local environments, use:
     // url := fmt.Sprintf("http://172.17.0.1:<local port>")
+    //
+    url := fmt.Sprintf("http://%s.nuclio.svc.cluster.local:8080", name)
 
     response, err := http.Post(url, "content-type/json", bytes.NewBuffer(marshalledBody))
     if err != nil {

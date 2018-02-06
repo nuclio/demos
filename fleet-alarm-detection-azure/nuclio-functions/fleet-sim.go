@@ -46,6 +46,7 @@ import (
 	"strconv"
 	"sync"
 
+	"github.com/nuclio/logger"
 	"github.com/nuclio/nuclio-sdk-go"
 	"pack.ag/amqp"
 )
@@ -93,7 +94,7 @@ func Handler(context *nuclio.Context, event nuclio.Event) (interface{}, error) {
 	return nil, nil
 }
 
-func generateRandomMetrics(logger nuclio.Logger,
+func generateRandomMetrics(logger logger.Logger,
 	metricsChannel chan metric,
 	numberOfCars int) {
 
@@ -118,7 +119,7 @@ func generateRandomFloat(min float32, max float32) float32 {
 	return (rand.Float32() * diff) + min
 }
 
-func sendMetrics(logger nuclio.Logger,
+func sendMetrics(logger logger.Logger,
 	sender *amqp.Sender,
 	metricChannel chan metric,
 	completionWaitGroup *sync.WaitGroup) {
