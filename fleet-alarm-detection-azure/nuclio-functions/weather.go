@@ -21,7 +21,7 @@ import (
     "net/http"
     "math/rand"
 
-    "github.com/nuclio/nuclio-sdk"
+    "github.com/nuclio/nuclio-sdk-go"
 )
 
 type weather struct {
