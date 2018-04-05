@@ -1,3 +1,19 @@
+/*
+Copyright 2017 The Nuclio Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
 package main
 
 import (
@@ -6,7 +22,7 @@ import (
 	"fmt"
 )
 
-// sample SNS event template (%q is replaced with the S3 event)
+// sample SNS event template (%q is replaced with the escaped S3 event)
 const testSNS = `
 {
   "Type" : "Notification",
@@ -60,20 +76,24 @@ const sampleS3Event = `
    ]
 }`
 
+// function unit testing
 func TestS3Watch(t *testing.T) {
+	// Initialize a test context (verbose = true)
 	tc, err := nutest.NewTestContext(Handler, true, nil )
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	// build the S3 message inside the SNS message
+	// build the simulated S3 message inside the SNS message
 	eventString := fmt.Sprintf(testSNS, sampleS3Event)
 
+	// Create a test event (eventString is a simulated event Json)
 	testEvent := nutest.TestEvent{
 		Path: "",
 		Body: []byte(eventString),
 	}
+
+	// Invoke the tested function
 	resp, err := tc.Invoke(&testEvent)
 	tc.Logger.InfoWith("Run complete", "resp", resp, "err", err)
-	fmt.Println(resp)
 }
