@@ -48,7 +48,7 @@ import (
 
 	"github.com/nuclio/logger"
 	"github.com/nuclio/nuclio-sdk-go"
-	"pack.ag/amqp"
+	"github.com/nuclio/amqp"
 )
 
 const (

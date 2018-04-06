@@ -61,7 +61,7 @@ import (
     "net/http"
 
     "github.com/nuclio/nuclio-sdk-go"
-    "pack.ag/amqp"
+    "github.com/nuclio/amqp"
 )
 
 type metric struct {
