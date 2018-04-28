@@ -1,0 +1,22 @@
+kind: Function
+  spec:
+    runtime: python:3.6
+    handler: cloudevents:handler
+    env:
+      - name: TWITTER_CONSUMER_KEY
+        value: value-here
+      - name: TWITTER_CONSUMER_SECRET
+        value: value-here
+      - name: TWITTER_ACCESS_TOKEN
+        value: value-here
+      - name: TWITTER_ACCESS_TOKEN_SECRET
+        value: value-here
+    build:
+      baseImage: jessie
+      commands:
+      - apt-get update && apt-get install -y wget
+      - wget http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz
+      - mkdir -p /tmp/tfmodel
+      - tar -xzvf inception-2015-12-05.tgz -C /tmp/tfmodel
+      - rm inception-2015-12-05.tgz
+      - pip install requests numpy tensorflow tweepy inflect
